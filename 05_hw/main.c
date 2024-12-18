@@ -1,34 +1,46 @@
 #include "stack.h"
-
+#include <assert.h>
 #include <stdio.h>
 
-int main() {
+void test_stack_operations() {
+    printf("Start of testing\n");
     Stack stack;
     initStack(&stack);
 
+    assert(isEmpty(&stack) == true);
+    printf("The initial stack\n");
+    traverseStack(&stack);
     push(&stack, 10);
+    assert(stack.top->data == 10);
     push(&stack, 20);
     push(&stack, 30);
 
-    printf("After pushing elements:\n");
+    assert(isEmpty(&stack) == false);
+    printf("Stack after adding elements\n");
+    traverseStack(&stack);
+    assert(getTop(&stack)->data == 30);
+    assert(pop(&stack) == true);
+    printf("Stack after excluding the last element\n");
     traverseStack(&stack);
 
-    pop(&stack);
 
-    printf("After popping an element:\n");
-    traverseStack(&stack);
+    assert(getTop(&stack)->data == 20);
 
-    Node* searchResult = searchByValue(&stack, 20);
-    if (searchResult != NULL) {
-        printf("Element with value 20 found.\n");
-    } else {
-        printf("Element with value 20 not found.\n");
-    }
+    assert(searchByValue(&stack, 20) != NULL);
+    assert(searchByValue(&stack, 100) == NULL);
 
-    Node* topElement = getTop(&stack);
-    if (topElement != NULL) {
-        printf("Top element: %d\n", topElement->data);
-    }
+    assert(searchByIndex(&stack, 0)->data == 20);
+    assert(searchByIndex(&stack, 1)->data == 10);
+    assert(searchByIndex(&stack, 2) == NULL);
+
+    destroyStack(&stack);
+    assert(isEmpty(&stack) == true);
+    printf("End of testing\n");
+}
+
+int main() {
+    test_stack_operations();
+    printf("All tests passed!\n");
 
     return 0;
 }
