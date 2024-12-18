@@ -14,12 +14,14 @@ void initStack(Stack* stack) {
 }
 
 void destroyStack(Stack* stack) {
+    if (stack == NULL || stack->top == NULL) return; 
     Node* current = stack->top;
     while (current != NULL) {
-        Node *tmp = current;
+        Node* tmp = current;
         current = current->next;
-	    free(tmp);
+        free(tmp);
     }
+    stack->top = NULL;
 }
 
 void push(Stack* stack, int data) {
