@@ -28,6 +28,6 @@ jobs:
 
     - name: Generate coverage report
       run: |
-        gcov stack.c
+        gcov 05_hw/stack.c
         lcov --capture --directory . --output-file coverage.info
         genhtml coverage.info --output-directory coverage
