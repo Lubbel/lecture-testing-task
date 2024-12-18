@@ -29,7 +29,7 @@ Node* searchByValue(Stack* stack, int value);
 
 Node* searchByIndex(Stack* stack, int index);
 
-Node* getTop(Stack* stack);
+Node* getTop(const Stack* stack);
 
 void traverseStack(const Stack* stack);
 

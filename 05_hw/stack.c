@@ -65,7 +65,7 @@ Node* searchByIndex(Stack* stack, int index) {
     return NULL;
 }
 
-Node* getTop(Stack* stack) {
+Node* getTop(const Stack* stack) {
     if (stack == NULL) return NULL;
     return stack->top;
 }
