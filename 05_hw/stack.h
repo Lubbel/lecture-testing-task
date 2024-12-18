@@ -23,7 +23,7 @@ void destroyStack(Stack *stack);
 
 void push(Stack* stack, int data);
 
-void pop(Stack* stack);
+bool pop(Stack* stack);
 
 Node* searchByValue(Stack* stack, int value);
 
@@ -31,9 +31,9 @@ Node* searchByIndex(Stack* stack, int index);
 
 Node* getTop(Stack* stack);
 
-void traverseStack(Stack* stack);
+void traverseStack(const Stack* stack);
 
-bool isEmpty(Stack* stack);
+bool isEmpty(const Stack* stack);
 
 #ifdef __cplusplus
 }
